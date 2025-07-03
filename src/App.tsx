@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import { Search, ShoppingCart, Menu, X } from 'lucide-react';
+import { Toaster, toast } from 'react-hot-toast';
 import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
 import Sweeties from './pages/Sweeties';
@@ -131,11 +132,43 @@ function App() {
     setCartItems(prevItems => {
       const existingItem = prevItems.find(i => i.id === item.id);
       if (existingItem) {
-        return prevItems.map(i =>
+        const updatedItems = prevItems.map(i =>
           i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
         );
+        // Show success toast for existing item
+        toast.success(`${item.name} quantity updated in cart!`, {
+          duration: 3000,
+          style: {
+            background: '#10B981',
+            color: '#ffffff',
+            fontWeight: '500',
+            borderRadius: '8px',
+            padding: '12px 16px',
+          },
+          iconTheme: {
+            primary: '#ffffff',
+            secondary: '#10B981',
+          },
+        });
+        return updatedItems;
+      } else {
+        // Show success toast for new item
+        toast.success(`${item.name} added to cart!`, {
+          duration: 3000,
+          style: {
+            background: '#10B981',
+            color: '#ffffff',
+            fontWeight: '500',
+            borderRadius: '8px',
+            padding: '12px 16px',
+          },
+          iconTheme: {
+            primary: '#ffffff',
+            secondary: '#10B981',
+          },
+        });
+        return [...prevItems, { ...item, quantity: 1 }];
       }
-      return [...prevItems, { ...item, quantity: 1 }];
     });
   };
 
@@ -183,6 +216,21 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Toast Notifications */}
+      <Toaster 
+        position="top-center"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: '#10B981',
+            color: '#ffffff',
+            fontWeight: '500',
+            borderRadius: '8px',
+            padding: '12px 16px',
+          },
+        }}
+      />
+
       <nav className="fixed w-full header-glass z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">

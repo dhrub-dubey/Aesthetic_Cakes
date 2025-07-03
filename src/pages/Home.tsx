@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Cake, Clock, Phone, Mail, Instagram } from 'lucide-react';
-import { Toaster, toast } from 'react-hot-toast';
 import emailjs from '@emailjs/browser';
 import { cakes, sweeties } from '../data/products';
 import { CartItem } from '../components/CartModal';
@@ -120,11 +119,11 @@ function Home({ addToCart }: HomeProps) {
       );
 
       if (result.text === 'OK') {
-        toast.success('Message sent successfully!');
+        // Note: Toast notification is now handled in App.tsx
         formRef.current.reset();
       }
     } catch (error) {
-      toast.error('Failed to send message. Please try again.');
+      // Note: Error handling could also use toast notifications
       console.error('Error sending email:', error);
     } finally {
       setIsSubmitting(false);
@@ -133,7 +132,6 @@ function Home({ addToCart }: HomeProps) {
 
   return (
     <>
-      <Toaster position="top-center" />
       {/* Hero Section */}
       <section id="home" className="pt-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#FFD1DC]/30 to-white/80"></div>
