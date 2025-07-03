@@ -383,7 +383,7 @@ export const sweeties: Product[] = [
     name: "Mango Mousse",
     description: "Delicious mango mousse with a light and airy texture",
     price: "Rs. 60.00",
-    image: "/assets/mangomousse.png",
+    image: `${import.meta.env.BASE_URL}assets/mangomousse.png`,
     category: "Mousses",
     isVeg: true,
     quantity: "1 piece (25g)",

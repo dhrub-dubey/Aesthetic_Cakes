@@ -189,7 +189,7 @@ function App() {
             <div className="flex items-center">
               <Link to="/" className="flex items-center logo-container p-2 rounded-full">
                 <img 
-                  src="/assets/aesthetic-cakes-logo.png" 
+                  src={`${import.meta.env.BASE_URL}assets/aesthetic-cakes-logo.png`}  
                   alt="Aesthetic Cakes Logo" 
                   className="h-12 w-12 transform hover:scale-105 transition-transform duration-300"
                 />
