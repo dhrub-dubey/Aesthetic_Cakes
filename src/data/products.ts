@@ -74,7 +74,7 @@ export const cakes: Product[] = [
     name: "Chocolate Cake",
     description: "Rich chocolate cake with dark chocolate ganache and chocolate shavings",
     price: "Rs. 1500.00",
-    image: `${import.meta.env.BASE_URL}assets/purechocolate cake.png`,
+    image: `${import.meta.env.BASE_URL}assets/purechocolatecake.png`,
     category: "Classic",
     isVeg: false,
     quantity: "2-layer cake (serves 8-10)",

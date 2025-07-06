@@ -22,8 +22,8 @@ function Home({ addToCart }: HomeProps) {
     { ...cakes[0], type: 'cake' },    // Classic Wedding Cake
     { ...sweeties[0], type: 'sweet' }, // Classic Chocolate Brownies
     { ...cakes[6], type: 'cake' },    // Mirror Glaze Galaxy Cake
-    { ...sweeties[1], type: 'sweet' }, // French Macarons
-    { ...cakes[2], type: 'cake' },    // Chocolate Truffle Cake
+    { ...sweeties[1], type: 'sweet' }, // Chocolate Mango Mousse
+    { ...cakes[2], type: 'cake' },    // Chocolate Cake
     { ...cakes[7], type: 'cake' }     // Geometric Gold Cake
   ];
 
@@ -159,11 +159,13 @@ function Home({ addToCart }: HomeProps) {
             <div className="md:w-1/2">
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#FFD1DC] to-[#FF69B4] rounded-lg opacity-30 blur"></div>
-                <img
-                  src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80"
-                  alt="Signature Cake"
-                  className="relative rounded-lg shadow-xl transform hover:scale-[1.02] transition-transform duration-300"
-                />
+                <div className="relative w-full h-96 rounded-lg overflow-hidden shadow-xl">
+                  <img
+                    src={`${import.meta.env.BASE_URL || '/'}assets/purechocolatecake.png`}
+                    alt="Signature Cake"
+                    className="w-full h-full object-cover transform hover:scale-[1.02] transition-transform duration-300"
+                  />
+                </div>
               </div>
             </div>
           </div>
