@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { X } from 'lucide-react';
+import CheckoutFormModal from './CheckoutFormModal'; // ✅ newly added import
 
 export interface CartItem {
   id: number;
@@ -24,6 +25,8 @@ const CartModal: React.FC<CartModalProps> = ({
   onUpdateQuantity,
   onRemoveItem,
 }) => {
+  const [showForm, setShowForm] = useState(false); // new state
+
   if (!isOpen) return null;
 
   const total = items.reduce((sum, item) => {
@@ -33,8 +36,11 @@ const CartModal: React.FC<CartModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
-      <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" onClick={onClose}></div>
-      
+      <div
+        className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
+        onClick={onClose}
+      ></div>
+
       <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-xl">
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between border-b border-gray-200 p-4">
@@ -55,7 +61,10 @@ const CartModal: React.FC<CartModalProps> = ({
             ) : (
               <div className="space-y-4">
                 {items.map((item) => (
-                  <div key={item.id} className="flex items-center space-x-4 bg-white rounded-lg p-4 shadow-sm">
+                  <div
+                    key={item.id}
+                    className="flex items-center space-x-4 bg-white rounded-lg p-4 shadow-sm"
+                  >
                     <img
                       src={item.image}
                       alt={item.name}
@@ -66,7 +75,9 @@ const CartModal: React.FC<CartModalProps> = ({
                       <p className="text-[#C71585]">{item.price}</p>
                       <div className="flex items-center space-x-2 mt-2">
                         <button
-                          onClick={() => onUpdateQuantity(item.id, Math.max(0, item.quantity - 1))}
+                          onClick={() =>
+                            onUpdateQuantity(item.id, Math.max(0, item.quantity - 1))
+                          }
                           className="px-2 py-1 rounded-md bg-gray-100 hover:bg-gray-200 transition-colors"
                         >
                           -
@@ -95,10 +106,12 @@ const CartModal: React.FC<CartModalProps> = ({
           <div className="border-t border-gray-200 p-4">
             <div className="flex justify-between items-center mb-4">
               <span className="text-lg font-medium">Total:</span>
-              <span className="text-lg font-medium text-[#C71585]">Rs. {total.toFixed(2)}</span>
+              <span className="text-lg font-medium text-[#C71585]">
+                Rs. {total.toFixed(2)}
+              </span>
             </div>
             <button
-              onClick={() => alert('Checkout functionality coming soon!')}
+              onClick={() => setShowForm(true)} // opens the form modal
               disabled={items.length === 0}
               className="w-full bg-[#C71585] text-white py-3 rounded-full hover:bg-[#C71585]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
@@ -107,6 +120,13 @@ const CartModal: React.FC<CartModalProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Checkout Form Modal */}
+      <CheckoutFormModal
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        cartItems={items.map(({ name, quantity }) => ({ name, quantity }))}
+      />
     </div>
   );
 };
