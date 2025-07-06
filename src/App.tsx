@@ -460,7 +460,7 @@ function App() {
       <footer className="bg-[#F5F5F5] py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-gray-600">
-            <p>© 2024 Aesthetic Cakes. All rights reserved.</p>
+            <p>© 2025 Aesthetic Cakes. All rights reserved.</p>
           </div>
         </div>
       </footer>
