@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://dhrub-dubey.github.io/Aesthetic_Cakes",
+  "homepage": "https://dhrub-dubey.github.io/DhrubDubey_LetsUpgradeFrontendSprint",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
