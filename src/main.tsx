@@ -5,7 +5,7 @@ import App from './App.tsx';
 import './index.css';
 
 // GitHub Pages routing fix
-const basename = import.meta.env.DEV ? '/' : '/DhrubDubey_LetsUpgradeFrontendSprint/';
+const basename = import.meta.env.DEV ? '/' : '/Aesthetic_Cakes/';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
